@@ -1,0 +1,30 @@
+.message-form {
+  display: flex;
+  gap: 16px;
+  margin: 0 32px;
+  height: 48px;
+  border-radius: 16px;
+  background: var(--bg);
+
+  .message-input {
+    background: transparent;
+    border: none;
+    padding: 0 16px;
+    font-size: 16px;
+    flex-grow: 1;
+  }
+
+  .message-button {
+    width: 48px;
+    height: 48px;
+    border: none;
+    border-radius: 50%;
+    background: transparent;
+    color: var(--text);
+
+    &:hover {
+      color: var(--text-h);
+      cursor: pointer;
+    }
+  }
+}

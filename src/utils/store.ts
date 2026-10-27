@@ -1,5 +1,6 @@
 const idInstanceKey = 'idInstance';
 const apiTokenInstanceKey = 'apiTokenInstance';
+const addresseeKey = 'addressee';
 
 // TODO: trim, sanitize, etc
 //  Clear creds + addressee
@@ -26,3 +27,8 @@ export const clearCredentials = () => {
   localStorage.removeItem(apiTokenInstanceKey);
 };
 
+export const getAddressee = () => localStorage.getItem(addresseeKey);
+
+export const setAddressee = (number: string) => localStorage.setItem(addresseeKey, number);
+
+export const clearAddressee = () => localStorage.removeItem(addresseeKey);

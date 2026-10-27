@@ -1,5 +1,4 @@
 import { useState } from 'react'
-import './AuthPage.css'
 import * as React from "react";
 import isBlank from "../../utils/isBlank.ts";
 import {clearCredentials, setCredentials} from "../../utils/store.ts";
@@ -39,7 +38,7 @@ const AuthPage = () => {
         <div className="hero">
           <h1>Вход в MAX</h1>
         </div>
-        <form className="login-card" onSubmit={signIn}>
+        <form className="simple-form" onSubmit={signIn}>
           <input
             type="text"
             autoFocus
@@ -62,7 +61,7 @@ const AuthPage = () => {
           >
             Вход
           </button>
-          <div className="login-error">
+          <div className="simple-error">
             {message && <code>{message}</code>}
           </div>
         </form>

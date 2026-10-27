@@ -1,0 +1,44 @@
+.avatar {
+  border-radius: 50%;
+  background-color: var(--shadow);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--text-h);
+  font-weight: bold;
+  flex-shrink: 0;
+  overflow: hidden;
+
+  &.large {
+    width: 48px;
+    height: 48px;
+    font-size: 19px;
+  }
+
+  &.medium {
+    width: 32px;
+    height: 32px;
+    font-size: 16px;
+  }
+
+  &.small {
+    width: 16px;
+    height: 16px;
+    font-size: 14px;
+  }
+
+  &.bordered {
+    border: solid 1px var(--border);
+    background: var(--bg);
+  }
+
+  img {
+    display: block;
+    width: 100%;
+    height: auto;
+  }
+
+  span {
+    position: absolute;
+  }
+}

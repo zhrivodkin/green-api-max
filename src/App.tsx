@@ -3,6 +3,7 @@ import AuthPage from "./pages/AuthPage/AuthPage.tsx";
 import {AuthLayout} from "./layouts/AuthLayout.tsx";
 import routes from "./shared/routes.ts";
 import MessagingPage from "./pages/MessagingPage/MessagingPage.tsx";
+import ChatPage from "./pages/ChatPage/ChatPage.tsx";
 
 function App() {
   return (
@@ -12,6 +13,7 @@ function App() {
           <Route element={<AuthPage />} path={routes.auth} />
         </Route>
         <Route element={<MessagingPage />} path={routes.messaging} />
+        <Route element={<ChatPage />} path={routes.chatRoute} />
       </Routes>
     </BrowserRouter>
   )

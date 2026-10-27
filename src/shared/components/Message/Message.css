@@ -1,0 +1,22 @@
+.message {
+  color: #6b6375;
+  text-align: left;
+}
+
+.message.incoming {
+  align-self: flex-start;
+}
+
+.message.outgoing {
+  align-self: flex-end;
+}
+
+.message-header {
+  display: flex;
+}
+
+.message-content {
+  padding: 8px 10px;
+  border-radius: 16px;
+  background: var(--accent-bg);
+}
