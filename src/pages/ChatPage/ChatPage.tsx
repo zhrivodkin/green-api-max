@@ -33,18 +33,26 @@ const ChatPage = () => {
     fetchContact()
   }, [id]);
 
-   useEffect(() => {
-      const fetchMessages = async () => {
-        try {
-          await updateMessages();
-        } catch (error) {
-          console.error('Ошибка:', error);
-        }
-      };
+  useEffect(() => {
+    const fetchMessages = async () => {
+      try {
+        await updateMessages();
+      } catch (error) {
+        console.error('Ошибка:', error);
+      }
+    };
 
-      fetchMessages();
-      const intervalId = setInterval(fetchMessages, 30000);
-      return () => clearInterval(intervalId);
+    fetchMessages();
+    const intervalId = setInterval(fetchMessages, 30000);
+    return () => clearInterval(intervalId);
+
+    // Это не работало, запрос на receiveNotification висел и завершался по таймауту
+    // const fetchMessages = async () => {
+    //   const notification = await api.receiveNotification();
+    //   console.log(notification);
+    //   await api.deleteNotification(notification.receiptId)
+    // }
+    // fetchMessages();
     }, []);
 
   return (
