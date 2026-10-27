@@ -26,13 +26,26 @@ const ChatPage = () => {
 
   useEffect(() => {
     if (!id) return;
-    const fetchData = async () => {
+    const fetchContact = async () => {
       const contactInfo = await api.getContactInfo({chatId: id});
       setUser(contactInfo);
     }
-    fetchData()
-      .then(updateMessages);
-  }, [id, updateMessages]);
+    fetchContact()
+  }, [id]);
+
+   useEffect(() => {
+      const fetchMessages = async () => {
+        try {
+          await updateMessages();
+        } catch (error) {
+          console.error('Ошибка:', error);
+        }
+      };
+
+      fetchMessages();
+      const intervalId = setInterval(fetchMessages, 30000);
+      return () => clearInterval(intervalId);
+    }, []);
 
   return (
     <section className="section">

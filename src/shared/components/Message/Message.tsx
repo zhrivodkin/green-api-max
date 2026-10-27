@@ -1,5 +1,4 @@
 import type {TMessage, TUserInfo} from "../../../api/types.ts";
-import Avatar from "../Avatar/Avatar.tsx";
 import './Message.css';
 import LastSeen from "../LastSeen/LastSeen.tsx";
 
@@ -14,8 +13,6 @@ const Message = ({ message, user }: Props) => {
 
   return (
     <div className={`message ${type}`}>
-      {isAddressee && <Avatar url={user.avatar} userName={user.name} size="small" />}
-
       <div className="message-header">
         {isAddressee ? <span>{user.name}</span> : <span>Вы</span>}
         &nbsp;
