@@ -27,7 +27,7 @@ export type GetContactInfoResponse = {
   chatId: string;
   chatType: string;
   lastSeen: number;
-  phoneNumber: number;
+  phoneNumber: string;
   phoneNumberTimestamp: number;
 };
 
@@ -50,7 +50,7 @@ type APINotification = {
     senderName: string;
     senderType: string;
     senderContactName: string;
-    senderPhoneNumber: number;
+    senderPhoneNumber: string;
   };
   messageData: {
     typeMessage: 'textMessage';

@@ -2,7 +2,6 @@ import * as React from "react";
 import {useState} from "react";
 import isBlank from "../../../utils/isBlank.ts";
 import {api} from "../../../api/client.ts";
-import {setAddressee} from "../../../utils/store.ts";
 import routes from "../../routes.ts";
 import {useNavigate} from "react-router";
 
@@ -27,7 +26,6 @@ const CheckAccountModal = ({ onClose }: Props) => {
       if (result.exist === false) {
         setMessage('Пользователь не зарегистрирован в MAX');
       } else {
-        setAddressee(phoneNumber);
         onClose();
           navigate(routes.chat(result.chatId));
       }

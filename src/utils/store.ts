@@ -1,34 +1,39 @@
 const idInstanceKey = 'idInstance';
 const apiTokenInstanceKey = 'apiTokenInstance';
-const addresseeKey = 'addressee';
-
-// TODO: trim, sanitize, etc
-//  Clear creds + addressee
 
 interface Credentials {
   idInstance: string;
   apiTokenInstance: string;
 }
 
-export const getCredentials = () => {
-  const idInstance = localStorage.getItem(idInstanceKey);
-  const apiTokenInstance = localStorage.getItem(apiTokenInstanceKey);
+export const getCredentials = (): { idInstance: string | null; apiTokenInstance: string | null } => {
+  try {
+    return {
+      idInstance: localStorage.getItem(idInstanceKey),
+      apiTokenInstance: localStorage.getItem(apiTokenInstanceKey),
+    };
+  } catch {
+    return { idInstance: null, apiTokenInstance: null };
+  }
+};
 
-  return { idInstance, apiTokenInstance };
-}
-
-export const setCredentials = ({idInstance, apiTokenInstance}: Credentials) => {
-  localStorage.setItem(idInstanceKey, idInstance);
-  localStorage.setItem(apiTokenInstanceKey, apiTokenInstance);
+export const setCredentials = ({ idInstance, apiTokenInstance }: Credentials) => {
+  try {
+    localStorage.setItem(idInstanceKey, idInstance);
+    localStorage.setItem(apiTokenInstanceKey, apiTokenInstance);
+  } catch {
+    // ignore storage errors (private mode, quota)
+  }
 };
 
 export const clearCredentials = () => {
-  localStorage.removeItem(idInstanceKey);
-  localStorage.removeItem(apiTokenInstanceKey);
+  try {
+    localStorage.removeItem(idInstanceKey);
+    localStorage.removeItem(apiTokenInstanceKey);
+  } catch {
+    // ignore
+  }
 };
 
-export const getAddressee = () => localStorage.getItem(addresseeKey);
-
-export const setAddressee = (number: string) => localStorage.setItem(addresseeKey, number);
-
-export const clearAddressee = () => localStorage.removeItem(addresseeKey);
+export const isBlankValue = (value: string | null | undefined): boolean =>
+  !value || value.trim().length === 0;
