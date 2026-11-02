@@ -1,5 +1,5 @@
 import {useState} from "react";
-import CheckAccountModal from "../CheckAccountModal/CheckAccountModal.tsx";
+import CheckAccountModal from "@shared/components/CheckAccountModal/CheckAccountModal.tsx";
 
 type Props = {
   size?: 'small' | 'medium';

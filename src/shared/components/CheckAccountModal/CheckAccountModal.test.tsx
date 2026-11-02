@@ -2,9 +2,9 @@ import { describe, it, expect, vi, beforeEach } from 'vitest';
 import { render, screen } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 import { MemoryRouter } from 'react-router';
-import '../../../test/mocks/api';
-import { apiMock } from '../../../test/mocks/api';
-import CheckAccountModal from './CheckAccountModal.tsx';
+import '@/test/mocks/api.ts';
+import { apiMock } from '@/test/mocks/api.ts';
+import CheckAccountModal from '@shared/components/CheckAccountModal/CheckAccountModal.tsx';
 
 const mockNavigate = vi.fn();
 vi.mock('react-router', async () => {

@@ -1,5 +1,5 @@
-import Avatar from "../Avatar/Avatar.tsx";
-import type {TUserInfo} from "../../../api/types.ts";
+import Avatar from "@shared/components/Avatar/Avatar.tsx";
+import type {TUserInfo} from "@api/types.ts";
 import './ChatList.css';
 
 type Props = {

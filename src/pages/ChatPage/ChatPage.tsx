@@ -1,13 +1,13 @@
 import './ChatPage.css';
-import AddChatButton from "../../shared/components/AddChatButton/AddChatButton.tsx";
+import AddChatButton from "@shared/components/AddChatButton/AddChatButton.tsx";
 import {useParams} from "react-router";
 import {useCallback, useEffect, useState} from "react";
-import {api} from "../../api/client.ts";
-import type {TMessage, TUserInfo} from "../../api/types.ts";
-import SendMessageForm from "../../shared/components/SendMessageForm/SendMessageForm.tsx";
-import ChatHeader from "../../shared/components/ChatHeader/ChatHeader.tsx";
-import ChatList from "../../shared/components/ChatList/ChatList.tsx";
-import ChatContent from "../../shared/components/ChatContent/ChatContent.tsx";
+import {api} from "@api/client.ts";
+import type {TMessage, TUserInfo} from "@api/types.ts";
+import SendMessageForm from "@shared/components/SendMessageForm/SendMessageForm.tsx";
+import ChatHeader from "@shared/components/ChatHeader/ChatHeader.tsx";
+import ChatList from "@shared/components/ChatList/ChatList.tsx";
+import ChatContent from "@shared/components/ChatContent/ChatContent.tsx";
 
 const availableMessageTypes = ['textMessage', 'extendedTextMessage'];
 

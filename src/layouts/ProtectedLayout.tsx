@@ -1,8 +1,8 @@
 import {Outlet, useNavigate} from 'react-router';
-import {clearCredentials, getCredentials} from "../utils/store.ts";
-import {api} from "../api/client.ts";
-import isBlank from "../utils/isBlank.ts";
-import routes from "../shared/routes.ts";
+import {clearCredentials, getCredentials} from "@utils/store.ts";
+import {api} from "@api/client.ts";
+import isBlank from "@utils/isBlank.ts";
+import routes from "@shared/routes.ts";
 import {useEffect, useState} from "react";
 
 export const ProtectedLayout = () => {

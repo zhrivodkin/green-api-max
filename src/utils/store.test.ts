@@ -1,5 +1,5 @@
 import { describe, it, expect, beforeEach, vi } from 'vitest';
-import { getCredentials, setCredentials, clearCredentials, isBlankValue } from './store.ts';
+import { getCredentials, setCredentials, clearCredentials, isBlankValue } from '@utils/store.ts';
 
 beforeEach(() => {
   localStorage.clear();

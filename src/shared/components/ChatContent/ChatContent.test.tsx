@@ -1,7 +1,7 @@
 import { describe, it, expect, vi } from 'vitest';
 import { render, screen } from '@testing-library/react';
-import ChatContent from './ChatContent.tsx';
-import type { TMessage } from '../../../api/types.ts';
+import ChatContent from '@shared/components/ChatContent/ChatContent.tsx';
+import type { TMessage } from '@api/types.ts';
 
 const mk = (id: string): TMessage => ({
   type: 'incoming',

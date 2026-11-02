@@ -1,6 +1,6 @@
-import type {TMessage, TUserInfo} from "../../../api/types.ts";
+import type {TMessage, TUserInfo} from "@api/types.ts";
 import './ChatContent.css';
-import Message from "../Message/Message.tsx";
+import Message from "@shared/components/Message/Message.tsx";
 import {useEffect, useRef} from "react";
 
 type Props = {

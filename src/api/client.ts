@@ -12,8 +12,8 @@ import type {
   ReceiveNotificationResponse,
   SendMessageDTO,
   SendMessageResponse,
-} from './types.ts';
-import { getCredentials } from '../utils/store.ts';
+} from '@api/types.ts';
+import { getCredentials } from '@utils/store.ts';
 
 const BASE = import.meta.env.VITE_API_URL?.replace(/\/$/, '') || '';
 

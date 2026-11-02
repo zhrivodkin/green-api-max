@@ -1,8 +1,8 @@
 import * as React from "react";
 import { useEffect, useRef, useState } from "react";
-import isBlank from "../../../utils/isBlank.ts";
-import { api, ApiError } from "../../../api/client.ts";
-import routes from "../../routes.ts";
+import isBlank from "@utils/isBlank.ts";
+import { api, ApiError } from "@api/client.ts";
+import routes from "@shared/routes.ts";
 import { useNavigate } from "react-router";
 
 type Props = {

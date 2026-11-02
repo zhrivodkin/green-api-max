@@ -1,7 +1,7 @@
-import Avatar from "../Avatar/Avatar.tsx";
-import type {TUserInfo} from "../../../api/types.ts";
+import Avatar from "@shared/components/Avatar/Avatar.tsx";
+import type {TUserInfo} from "@api/types.ts";
 import './ChatHeader.css';
-import LastSeen from "../LastSeen/LastSeen.tsx";
+import LastSeen from "@shared/components/LastSeen/LastSeen.tsx";
 
 type Props = {
   user?: TUserInfo;

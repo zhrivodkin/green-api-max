@@ -1,4 +1,4 @@
-import AddChatButton from "../../shared/components/AddChatButton/AddChatButton.tsx";
+import AddChatButton from "@shared/components/AddChatButton/AddChatButton.tsx";
 
 const MessagingPage = () => {
   return (

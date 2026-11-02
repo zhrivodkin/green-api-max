@@ -1,5 +1,5 @@
 import { describe, it, expect } from 'vitest';
-import isBlank from './isBlank.ts';
+import isBlank from '@utils/isBlank.ts';
 
 describe('isBlank', () => {
   it('returns true for empty/whitespace/null/undefined', () => {

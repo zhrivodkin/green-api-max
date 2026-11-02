@@ -1,9 +1,9 @@
 import { useState } from 'react'
 import * as React from "react";
-import isBlank from "../../utils/isBlank.ts";
-import {clearCredentials, setCredentials} from "../../utils/store.ts";
-import {api} from "../../api/client.ts";
-import routes from "../../shared/routes.ts";
+import isBlank from "@utils/isBlank.ts";
+import {clearCredentials, setCredentials} from "@utils/store.ts";
+import {api} from "@api/client.ts";
+import routes from "@shared/routes.ts";
 import {useNavigate} from "react-router";
 
 const AuthPage = () => {

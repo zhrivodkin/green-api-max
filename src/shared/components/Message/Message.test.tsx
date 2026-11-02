@@ -1,7 +1,7 @@
 import { describe, it, expect } from 'vitest';
 import { render, screen } from '@testing-library/react';
-import Message from './Message.tsx';
-import type { TMessage, TUserInfo } from '../../../api/types.ts';
+import Message from '@shared/components/Message/Message.tsx';
+import type { TMessage, TUserInfo } from '@api/types.ts';
 
 const msg = (type: 'incoming' | 'outgoing'): TMessage => ({
   type,

@@ -1,6 +1,6 @@
 import { describe, it, expect } from 'vitest';
 import { render, screen } from '@testing-library/react';
-import Avatar from './Avatar.tsx';
+import Avatar from '@shared/components/Avatar/Avatar.tsx';
 
 describe('Avatar', () => {
   it('renders initials from multi-word name (max 2)', () => {

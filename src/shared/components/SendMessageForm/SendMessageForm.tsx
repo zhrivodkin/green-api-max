@@ -1,8 +1,8 @@
 import './SendMessageForm.css';
 import * as React from "react";
 import { useState } from "react";
-import isBlank from "../../../utils/isBlank.ts";
-import { api, ApiError } from "../../../api/client.ts";
+import isBlank from "@utils/isBlank.ts";
+import { api, ApiError } from "@api/client.ts";
 
 type Props = {
   chatId: string;

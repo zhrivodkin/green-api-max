@@ -1,9 +1,9 @@
 import { describe, it, expect, vi, beforeEach } from 'vitest';
 import { render, screen } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
-import '../../../test/mocks/api';
-import { apiMock } from '../../../test/mocks/api';
-import SendMessageForm from './SendMessageForm.tsx';
+import '@/test/mocks/api.ts';
+import { apiMock } from '@/test/mocks/api.ts';
+import SendMessageForm from '@shared/components/SendMessageForm/SendMessageForm.tsx';
 
 beforeEach(() => {
   vi.clearAllMocks();
@@ -32,7 +32,7 @@ describe('SendMessageForm', () => {
 
   it('keeps draft and shows error on failure', async () => {
     const user = userEvent.setup();
-    const { ApiError } = await import('../../../test/mocks/api');
+    const { ApiError } = await import('@/test/mocks/api.ts');
     apiMock.sendMessage.mockRejectedValue(new ApiError('fail'));
     render(<SendMessageForm chatId="c1" onSuccess={vi.fn()} />);
 

@@ -1,4 +1,4 @@
-import { formatDate } from '../../../utils/getDate.ts';
+import { formatDate } from '@utils/getDate.ts';
 
 type Props = {
   dateStr: number;

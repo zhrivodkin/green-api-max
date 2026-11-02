@@ -1,6 +1,6 @@
-import type {TMessage, TUserInfo} from "../../../api/types.ts";
+import type {TMessage, TUserInfo} from "@api/types.ts";
 import './Message.css';
-import LastSeen from "../LastSeen/LastSeen.tsx";
+import LastSeen from "@shared/components/LastSeen/LastSeen.tsx";
 
 type Props = {
   message: TMessage;

@@ -1,5 +1,5 @@
 import { describe, it, expect } from 'vitest';
-import { formatDate } from './getDate.ts';
+import { formatDate } from '@utils/getDate.ts';
 
 describe('formatDate', () => {
   it('formats millisecond timestamps', () => {
