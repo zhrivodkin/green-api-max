@@ -1,6 +1,7 @@
 import { BrowserRouter, Routes, Route } from 'react-router'
 import AuthPage from "./pages/AuthPage/AuthPage.tsx";
 import {AuthLayout} from "./layouts/AuthLayout.tsx";
+import {ProtectedLayout} from "./layouts/ProtectedLayout.tsx";
 import routes from "./shared/routes.ts";
 import MessagingPage from "./pages/MessagingPage/MessagingPage.tsx";
 import ChatPage from "./pages/ChatPage/ChatPage.tsx";
@@ -12,8 +13,10 @@ function App() {
         <Route element={<AuthLayout />} path={routes.root}>
           <Route element={<AuthPage />} path={routes.auth} />
         </Route>
-        <Route element={<MessagingPage />} path={routes.messaging} />
-        <Route element={<ChatPage />} path={routes.chatRoute} />
+        <Route element={<ProtectedLayout />} path={routes.root}>
+          <Route element={<MessagingPage />} path={routes.messaging} />
+          <Route element={<ChatPage />} path={routes.chatRoute} />
+        </Route>
       </Routes>
     </BrowserRouter>
   )

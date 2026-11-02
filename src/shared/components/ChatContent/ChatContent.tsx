@@ -8,18 +8,18 @@ type Props = {
   user?: TUserInfo;
 };
 
-const ChatContent = ({ messages }: Props) => {
-  const listRef = useRef(null);
+const ChatContent = ({ messages, user }: Props) => {
+  const listRef = useRef<HTMLDivElement>(null);
 
   // скролл вниз при появлении сообщений
   useEffect(() => {
-    listRef.current?.lastElementChild?.scrollIntoView();
+    listRef.current?.lastElementChild?.scrollIntoView({ behavior: 'smooth' });
   }, [messages]);
 
   return (
     <div className="chat-content" ref={listRef}>
       {messages.map((message: TMessage) =>
-        <Message key={message.idMessage} message={message}  />
+        <Message key={message.idMessage} message={message} user={user} />
       )}
     </div>
   );

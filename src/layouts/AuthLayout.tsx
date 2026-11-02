@@ -10,17 +10,22 @@ export const AuthLayout = () => {
   const { idInstance, apiTokenInstance } = getCredentials();
 
   useEffect(() => {
-    if (isBlank(idInstance) || isBlank(apiTokenInstance)) navigate(routes.auth, { replace: true });
+    if (isBlank(idInstance) || isBlank(apiTokenInstance)) {
+      navigate(routes.auth, { replace: true });
+      return;
+    }
+    let cancelled = false;
     const fetchData = async () => {
       try {
         await api.getAccountSettings();
-        navigate(routes.messaging, { replace: true });
+        if (!cancelled) navigate(routes.messaging, { replace: true });
       } catch {
         clearCredentials();
-        navigate(routes.auth, { replace: true });
+        if (!cancelled) navigate(routes.auth, { replace: true });
       }
     };
     fetchData();
+    return () => { cancelled = true; };
   }, [idInstance, apiTokenInstance, navigate]);
 
   return <Outlet />;

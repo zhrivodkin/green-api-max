@@ -24,7 +24,6 @@ const CheckAccountModal = ({ onClose }: Props) => {
     try {
       // TODO regexp, sanitize
       const result = await api.checkAccount({phoneNumber});
-      console.log(result);
       if (result.exist === false) {
         setMessage('Пользователь не зарегистрирован в MAX');
       } else {

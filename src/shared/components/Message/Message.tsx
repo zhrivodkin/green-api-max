@@ -9,12 +9,12 @@ type Props = {
 
 const Message = ({ message, user }: Props) => {
   const { type, timestamp, textMessage } = message;
-  const isAddressee = user && type === 'incoming';
+  const senderName = type === 'incoming' ? (user?.name ?? 'Собеседник') : 'Вы';
 
   return (
     <div className={`message ${type}`}>
       <div className="message-header">
-        {isAddressee ? <span>{user.name}</span> : <span>Вы</span>}
+        <span>{senderName}</span>
         &nbsp;
         <LastSeen dateStr={timestamp} />
       </div>

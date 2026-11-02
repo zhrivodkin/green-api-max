@@ -17,43 +17,47 @@ const ChatPage = () => {
   const [messages, setMessages] = useState<TMessage[]>([]);
 
   const updateMessages = useCallback(async () => {
-    const messages = await api.getChatHistory({chatId: id});
-    const filteredMessages = messages
-      .filter(message => availableMessageTypes.includes(message.typeMessage))
+    if (!id) return;
+    const history = await api.getChatHistory({chatId: id});
+    const filteredMessages = history
+      .filter((message) => availableMessageTypes.includes(message.typeMessage))
       .reverse();
     setMessages(filteredMessages);
   }, [id]);
 
   useEffect(() => {
     if (!id) return;
+    let cancelled = false;
     const fetchContact = async () => {
-      const contactInfo = await api.getContactInfo({chatId: id});
-      setUser(contactInfo);
-    }
-    fetchContact()
+      try {
+        const contactInfo = await api.getContactInfo({chatId: id});
+        if (!cancelled) setUser(contactInfo);
+      } catch (error) {
+        console.error('Ошибка загрузки контакта:', error);
+      }
+    };
+    fetchContact();
+    return () => { cancelled = true; };
   }, [id]);
 
   useEffect(() => {
+    if (!id) return;
+    let cancelled = false;
     const fetchMessages = async () => {
       try {
-        await updateMessages();
+        if (!cancelled) await updateMessages();
       } catch (error) {
-        console.error('Ошибка:', error);
+        console.error('Ошибка загрузки сообщений:', error);
       }
     };
 
     fetchMessages();
     const intervalId = setInterval(fetchMessages, 30000);
-    return () => clearInterval(intervalId);
-
-    // Это не работало, запрос на receiveNotification висел и завершался по таймауту
-    // const fetchMessages = async () => {
-    //   const notification = await api.receiveNotification();
-    //   console.log(notification);
-    //   await api.deleteNotification(notification.receiptId)
-    // }
-    // fetchMessages();
-    }, []);
+    return () => {
+      cancelled = true;
+      clearInterval(intervalId);
+    };
+  }, [id, updateMessages]);
 
   return (
     <section className="section">
@@ -64,7 +68,7 @@ const ChatPage = () => {
         </div>
         <ChatHeader user={user} />
         <ChatList user={user} />
-        <ChatContent messages={messages} />
+        <ChatContent messages={messages} user={user} />
         <div></div>
         <div className="chat-form">
           <SendMessageForm chatId={id} onSuccess={updateMessages} />
