@@ -102,3 +102,14 @@ export const api = {
   getMessage: (body: GetMessageDTO) => post<GetMessageDTO, GetMessageResponse>('getMessage', body),
   getChatHistory: (body: GetChatHistoryDTO) => post<GetChatHistoryDTO, GetChatHistoryResponse[]>('getChatHistory', body),
 };
+
+let accountSettingsPromise: Promise<AccountSettingsResponse> | null = null;
+
+export const getAccountSettingsCached = (): Promise<AccountSettingsResponse> => {
+  if (!accountSettingsPromise) {
+    accountSettingsPromise = api.getAccountSettings().finally(() => {
+      accountSettingsPromise = null;
+    });
+  }
+  return accountSettingsPromise;
+};

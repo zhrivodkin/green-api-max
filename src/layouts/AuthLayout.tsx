@@ -1,6 +1,6 @@
 import {Outlet, useNavigate} from 'react-router';
 import {clearCredentials, getCredentials} from "@utils/store.ts";
-import {api} from "@api/client.ts";
+import {getAccountSettingsCached} from "@api/client.ts";
 import isBlank from "@utils/isBlank.ts";
 import routes from "@shared/routes.ts";
 import {useEffect} from "react";
@@ -17,7 +17,7 @@ export const AuthLayout = () => {
     let cancelled = false;
     const fetchData = async () => {
       try {
-        await api.getAccountSettings();
+        await getAccountSettingsCached();
         if (!cancelled) navigate(routes.messaging, { replace: true });
       } catch {
         clearCredentials();

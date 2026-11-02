@@ -1,6 +1,6 @@
 import {Outlet, useNavigate} from 'react-router';
 import {clearCredentials, getCredentials} from "@utils/store.ts";
-import {api} from "@api/client.ts";
+import {getAccountSettingsCached} from "@api/client.ts";
 import isBlank from "@utils/isBlank.ts";
 import routes from "@shared/routes.ts";
 import {useEffect, useState} from "react";
@@ -18,7 +18,7 @@ export const ProtectedLayout = () => {
     let cancelled = false;
     const verify = async () => {
       try {
-        await api.getAccountSettings();
+        await getAccountSettingsCached();
         if (!cancelled) setIsChecking(false);
       } catch {
         clearCredentials();

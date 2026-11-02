@@ -11,6 +11,7 @@ export class ApiError extends Error {
 
 export const apiMock = {
   getAccountSettings: vi.fn(),
+  getAccountSettingsCached: vi.fn(),
   checkAccount: vi.fn(),
   getContactInfo: vi.fn(),
   sendMessage: vi.fn(),
@@ -20,4 +21,5 @@ export const apiMock = {
 vi.mock('../../api/client', () => ({
   api: apiMock,
   ApiError,
+  getAccountSettingsCached: vi.fn(() => apiMock.getAccountSettings()),
 }));

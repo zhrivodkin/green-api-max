@@ -1,8 +1,7 @@
 import { useState } from 'react'
 import * as React from "react";
 import isBlank from "@utils/isBlank.ts";
-import {clearCredentials, setCredentials} from "@utils/store.ts";
-import {api} from "@api/client.ts";
+import {setCredentials} from "@utils/store.ts";
 import routes from "@shared/routes.ts";
 import {useNavigate} from "react-router";
 
@@ -17,19 +16,13 @@ const AuthPage = () => {
     e.preventDefault();
     setMessage('');
     setIsLoading(true);
-    if (isBlank(idInstance) || isBlank(apiTokenInstance)) return;
-    setCredentials({ idInstance, apiTokenInstance });
-    try {
-      await api.getAccountSettings();
-      navigate(routes.messaging, { replace: true });
-    } catch (error) {
-      if (error instanceof Error) {
-        setMessage(error.message);
-      }
-      clearCredentials();
-    } finally {
+    if (isBlank(idInstance) || isBlank(apiTokenInstance)) {
       setIsLoading(false);
+      return;
     }
+    setCredentials({ idInstance, apiTokenInstance });
+    navigate(routes.messaging, { replace: true });
+    setIsLoading(false);
   };
 
   return (
