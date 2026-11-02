@@ -1,29 +1,31 @@
 import './SendMessageForm.css';
 import * as React from "react";
-import {useState} from "react";
+import { useState } from "react";
 import isBlank from "../../../utils/isBlank.ts";
-import {api} from "../../../api/client.ts";
+import { api, ApiError } from "../../../api/client.ts";
 
 type Props = {
   chatId: string;
   onSuccess: () => void;
 };
 
-const SendMessageForm = ({chatId, onSuccess}: Props) => {
+const SendMessageForm = ({ chatId, onSuccess }: Props) => {
   const [message, setMessage] = useState('');
   const [isLoading, setIsLoading] = useState(false);
+  const [error, setError] = useState<string | null>(null);
 
   const sendMessage = async (e: React.SubmitEvent) => {
     e.preventDefault();
     if (isBlank(message)) return;
     setIsLoading(true);
+    setError(null);
     try {
       await api.sendMessage({ chatId, message });
-      onSuccess();
-    } catch {
-    // TODO
-    } finally {
       setMessage('');
+      onSuccess();
+    } catch (err) {
+      setError(err instanceof ApiError ? err.message : 'Не удалось отправить сообщение');
+    } finally {
       setIsLoading(false);
     }
   };
@@ -42,10 +44,11 @@ const SendMessageForm = ({chatId, onSuccess}: Props) => {
       <button
         type="submit"
         className="message-button"
-        disabled={isLoading}
+        disabled={isLoading || isBlank(message)}
       >
         ➤
       </button>
+      {error && <span className="message-error">{error}</span>}
     </form>
   );
 };

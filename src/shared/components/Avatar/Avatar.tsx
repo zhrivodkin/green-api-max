@@ -7,12 +7,17 @@ type Props = {
 };
 
 const Avatar = ({ size = 'medium', url, userName }: Props) => {
-  const name = userName?.split(' ').map(word => word[0]).join('');
+  const initials = userName
+    ?.split(/\s+/)
+    .filter(Boolean)
+    .map((word) => word[0]?.toUpperCase())
+    .join('')
+    .slice(0, 2);
+
   return (
-    // TODO: use classNames lib
     <div className={`avatar ${size} ${!url ? 'bordered' : ''}`}>
-      {name ? <span>{name}</span> : '?'}
-      {url && <img src={url} alt="Аватар пользователя" />}
+      {initials ? <span>{initials}</span> : '?'}
+      {url && <img src={url} alt={userName ? `Аватар ${userName}` : 'Аватар пользователя'} />}
     </div>
   );
 };
