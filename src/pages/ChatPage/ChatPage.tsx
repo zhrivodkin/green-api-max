@@ -52,7 +52,9 @@ const ChatPage = () => {
     };
 
     fetchMessages();
-    const intervalId = setInterval(fetchMessages, 30000);
+    const intervalId = setInterval(() => {
+      if (document.visibilityState === 'visible') fetchMessages();
+    }, 30000);
     return () => {
       cancelled = true;
       clearInterval(intervalId);
